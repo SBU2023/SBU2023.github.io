@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CSE 220 - Systems Fundamentals I</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f4f7fb;
+      color: #1e293b;
+      line-height: 1.7;
+    }
+
+    header {
+      background: linear-gradient(135deg, #0f172a, #1e3a8a);
+      color: white;
+      padding: 70px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 3.5rem;
+      margin-bottom: 15px;
+    }
+
+    header p {
+      max-width: 900px;
+      margin: auto;
+      font-size: 1.2rem;
+      opacity: 0.95;
+    }
+
+    nav {
+      background: white;
+      padding: 15px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    nav ul {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      list-style: none;
+      gap: 20px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #1e3a8a;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #2563eb;
+    }
+
+    .container {
+      width: 92%;
+      max-width: 1250px;
+      margin: 40px auto;
+    }
+
+    section {
+      background: white;
+      padding: 35px;
+      margin-bottom: 30px;
+      border-radius: 18px;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.06);
+    }
+
+    h2 {
+      color: #1d4ed8;
+      margin-bottom: 20px;
+      font-size: 2rem;
+    }
+
+    h3 {
+      margin-top: 20px;
+      margin-bottom: 10px;
+      color: #0f172a;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      margin-top: 20px;
+    }
+
+    .card {
+      background: #f8fafc;
+      padding: 25px;
+      border-radius: 15px;
+      border-left: 5px solid #2563eb;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card h3 {
+      margin-top: 0;
+      color: #1e3a8a;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      overflow-x: auto;
+    }
+
+    table th,
+    table td {
+      border: 1px solid #dbeafe;
+      padding: 14px;
+      text-align: left;
+    }
+
+    table th {
+      background: #2563eb;
+      color: white;
+    }
+
+    ul {
+      padding-left: 25px;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    .highlight {
+      background: linear-gradient(135deg, #dbeafe, #eff6ff);
+      padding: 25px;
+      border-radius: 15px;
+      margin-top: 20px;
+    }
+
+    .footer {
+      background: #0f172a;
+      color: white;
+      text-align: center;
+      padding: 35px 20px;
+      margin-top: 50px;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #2563eb;
+      color: white;
+      padding: 6px 12px;
+      border-radius: 999px;
+      margin: 5px;
+      font-size: 0.9rem;
+    }
+
+    .schedule-week {
+      background: #f8fafc;
+      padding: 18px;
+      border-radius: 12px;
+      margin-bottom: 15px;
+      border-left: 4px solid #3b82f6;
+    }
+
+    code {
+      background: #e2e8f0;
+      padding: 2px 6px;
+      border-radius: 5px;
+      font-family: Consolas, monospace;
+    }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2.5rem;
+      }
+
+      nav ul {
+        gap: 12px;
+      }
+
+      section {
+        padding: 25px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>CSE 220</h1>
+    <h2>Systems Fundamentals I</h2>
+    <p>
+      A foundational course introducing computer systems, low-level programming,
+      memory organization, data representation, assembly language, debugging,
+      and systems-level problem solving.
+    </p>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="#overview">Overview</a></li>
+      <li><a href="#objectives">Objectives</a></li>
+      <li><a href="#topics">Topics</a></li>
+      <li><a href="#schedule">Schedule</a></li>
+      <li><a href="#assignments">Assignments</a></li>
+      <li><a href="#grading">Grading</a></li>
+      <li><a href="#resources">Resources</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+
+    <section id="overview">
+      <h2>Course Overview</h2>
+      <p>
+        CSE 220 focuses on the internal workings of computer systems and bridges the gap
+        between software and hardware. Students learn how data is represented in memory,
+        how assembly language works, and how programs execute at the machine level.
+      </p>
+
+      <div class="highlight">
+        <strong>Core Focus Areas:</strong><br><br>
+        <span class="tag">Binary & Hexadecimal</span>
+        <span class="tag">Assembly Language</span>
+        <span class="tag">Memory Systems</span>
+        <span class="tag">C Programming</span>
+        <span class="tag">Debugging</span>
+        <span class="tag">Computer Architecture</span>
+        <span class="tag">Bitwise Operations</span>
+        <span class="tag">Pointers</span>
+      </div>
+    </section>
+
+    <section id="objectives">
+      <h2>Learning Objectives</h2>
+
+      <div class="grid">
+        <div class="card">
+          <h3>Data Representation</h3>
+          <p>
+            Understand binary numbers, hexadecimal notation, signed integers,
+            floating-point representation, and character encoding.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Systems Programming</h3>
+          <p>
+            Learn low-level programming using C and assembly language.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Memory Management</h3>
+          <p>
+            Explore memory organization, stack frames, heap allocation,
+            and pointer arithmetic.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Debugging Skills</h3>
+          <p>
+            Use tools like GDB and Valgrind to analyze and debug programs.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Computer Architecture</h3>
+          <p>
+            Understand CPU operations, instruction execution, registers,
+            and instruction pipelines.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Performance Optimization</h3>
+          <p>
+            Analyze runtime performance and optimize memory usage and algorithms.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="topics">
+      <h2>Major Course Topics</h2>
+
+      <table>
+        <tr>
+          <th>Topic</th>
+          <th>Description</th>
+        </tr>
+
+        <tr>
+          <td>Binary and Hexadecimal</td>
+          <td>Conversions between decimal, binary, and hexadecimal systems.</td>
+        </tr>
+
+        <tr>
+          <td>Bitwise Operations</td>
+          <td>AND, OR, XOR, shifting, masking, and bit manipulation.</td>
+        </tr>
+
+        <tr>
+          <td>C Programming</td>
+          <td>Functions, arrays, pointers, memory allocation, and structures.</td>
+        </tr>
+
+        <tr>
+          <td>Assembly Language</td>
+          <td>Registers, instructions, jumps, stack operations, and procedures.</td>
+        </tr>
+
+        <tr>
+          <td>Memory Organization</td>
+          <td>Stack, heap, static memory, and memory addressing.</td>
+        </tr>
+
+        <tr>
+          <td>CPU Architecture</td>
+          <td>Instruction cycle, ALU operations, and CPU design basics.</td>
+        </tr>
+
+        <tr>
+          <td>Debugging</td>
+          <td>Using debugging tools and analyzing segmentation faults.</td>
+        </tr>
+
+        <tr>
+          <td>Performance</td>
+          <td>Efficiency, runtime complexity, and cache behavior.</td>
+        </tr>
+      </table>
+    </section>
+
+    <section id="schedule">
+      <h2>Weekly Course Schedule</h2>
+
+      <div class="schedule-week">
+        <h3>Week 1</h3>
+        <p>Introduction to Computer Systems and Data Representation</p>
+      </div>
+
+      <div class="schedule-week">
+        <h3>Week 2</h3>
+        <p>Binary Arithmetic and Bitwise Operations</p>
+      </div>
+
+      <div class="schedule-week">
+        <h3>Week 3</h3>
+        <p>C Programming Basics and Functions</p>
+      </div>
+
+      <div class="schedule-week">
+        <h3>Week 4</h3>
+        <p>Pointers, Arrays, and Memory Layout</p>
+      </div>
+
+      <div class="schedule-week">
+        <h3>Week 5</h3>
+        <p>Structures and Dynamic Memory Allocation</p>
+      </div>
+
+      <div class="schedule-week">
+        <h3>Week 6</h3>
+        <p>Assembly Language Fundamentals</p>
+      </div>
+
+      <div class="schedule-week">
+        <h3>Week 7</h3>
+        <p>Procedures, Stack Frames, and Function Calls</p>
+      </div>
+
+      <div class="schedule-week">
+        <h3>Week 8</h3>
+        <p>Midterm Examination</p>
+      </div>
+
+      <div class="schedule-week">
+        <h3>Week 9</h3>
+        <p>Debugging Tools and Error Analysis</p>
+      </div>
+
+      <div class="schedule-week">
+        <h3>Week 10</h3>
+        <p>CPU Architecture and Instruction Execution</p>
+      </div>
+
+      <div class="schedule-week">
+        <h3>Week 11</h3>
+        <p>Memory Hierarchy and Cache Basics</p>
+      </div>
+
+      <div class="schedule-week">
+        <h3>Week 12</h3>
+        <p>Performance Optimization Techniques</p>
+      </div>
+
+      <div class="schedule-week">
+        <h3>Week 13</h3>
+        <p>Comprehensive Review and Advanced Topics</p>
+      </div>
+
+      <div class="schedule-week">
+        <h3>Week 14</h3>
+        <p>Final Project Presentations and Final Exam Preparation</p>
+      </div>
+    </section>
+
+    <section id="assignments">
+      <h2>Assignments & Labs</h2>
+
+      <div class="grid">
+        <div class="card">
+          <h3>Programming Assignments</h3>
+          <ul>
+            <li>Binary calculator implementation</li>
+            <li>Bit manipulation exercises</li>
+            <li>Memory allocation project</li>
+            <li>Assembly language programming</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Laboratory Work</h3>
+          <ul>
+            <li>Linux command line practice</li>
+            <li>Using GDB debugger</li>
+            <li>Pointer tracing exercises</li>
+            <li>Performance analysis</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Projects</h3>
+          <ul>
+            <li>Mini assembler simulator</li>
+            <li>Cache simulator</li>
+            <li>Custom memory allocator</li>
+            <li>Systems-level optimization task</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="grading">
+      <h2>Grading Breakdown</h2>
+
+      <table>
+        <tr>
+          <th>Component</th>
+          <th>Weight</th>
+        </tr>
+
+        <tr>
+          <td>Homework Assignments</td>
+          <td>15%</td>
+        </tr>
+
+        <tr>
+          <td>Programming Projects</td>
+          <td>25%</td>
+        </tr>
+
+        <tr>
+          <td>Laboratories</td>
+          <td>10%</td>
+        </tr>
+
+        <tr>
+          <td>Midterm Exam</td>
+          <td>20%</td>
+        </tr>
+
+        <tr>
+          <td>Final Exam</td>
+          <td>25%</td>
+        </tr>
+
+        <tr>
+          <td>Participation</td>
+          <td>5%</td>
+        </tr>
+      </table>
+    </section>
+
+    <section id="resources">
+      <h2>Course Resources</h2>
+
+      <h3>Recommended Textbooks</h3>
+      <ul>
+        <li><strong>Computer Systems: A Programmer's Perspective</strong></li>
+        <li><strong>The C Programming Language</strong> by Kernighan & Ritchie</li>
+        <li><strong>Modern Operating Systems</strong> by Andrew Tanenbaum</li>
+      </ul>
+
+      <h3>Software Tools</h3>
+      <ul>
+        <li><code>gcc</code> – GNU Compiler Collection</li>
+        <li><code>gdb</code> – GNU Debugger</li>
+        <li><code>valgrind</code> – Memory Debugging Tool</li>
+        <li><code>vim</code> / <code>VS Code</code> – Code Editors</li>
+        <li><code>Linux Terminal</code> – Development Environment</li>
+      </ul>
+
+      <h3>Skills Developed</h3>
+      <div class="highlight">
+        Systems thinking, debugging, memory analysis, low-level programming,
+        optimization, problem solving, and software engineering fundamentals.
+      </div>
+    </section>
+
+    <section id="faq">
+      <h2>Frequently Asked Questions</h2>
+
+      <h3>Is CSE 220 difficult?</h3>
+      <p>
+        CSE 220 is considered challenging because it introduces low-level concepts,
+        memory management, and systems programming. Consistent practice is essential.
+      </p>
+
+      <h3>What programming language is used?</h3>
+      <p>
+        The course primarily uses C programming along with assembly language.
+      </p>
+
+      <h3>Do I need Linux experience?</h3>
+      <p>
+        Basic Linux command-line familiarity is helpful but usually taught during labs.
+      </p>
+
+      <h3>What is the best way to succeed?</h3>
+      <ul>
+        <li>Practice programming regularly</li>
+        <li>Understand pointers deeply</li>
+        <li>Use debugging tools effectively</li>
+        <li>Start assignments early</li>
+        <li>Attend office hours and labs</li>
+      </ul>
+    </section>
+
+  </div>
+
+  <div class="footer">
+    <h3>CSE 220 - Systems Fundamentals I</h3>
+    <p>
+      Designed for students learning the foundations of computer systems,
+      low-level programming, and computer architecture.
+    </p>
+  </div>
+
+</body>
+</html>
