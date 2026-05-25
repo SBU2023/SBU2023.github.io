@@ -1,43 +1,162 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>My Website</title>
+<meta charset="UTF-8">
+<title>Abid M. Malik - Academic Profile</title>
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin-top: 50px;
-        }
+<style>
+    body {
+        margin: 0;
+        font-family: "Segoe UI", Arial, sans-serif;
+        background: #f5f7fb;
+        color: #222;
+    }
 
-        img {
-            width: 280px;
-            height: 280px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
+    /* Header */
+    .header {
+        background: #1f3b57;
+        color: white;
+        text-align: center;
+        padding: 50px 20px;
+    }
 
-        h1 {
-            margin-top: 20px;
-            font-size: 40px;
-        }
+    .header img {
+        width: 160px;
+        height: 160px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 4px solid white;
+    }
 
-        p {
-            font-size: 20px;
-        }
-    </style>
+    .header h1 {
+        margin: 15px 0 5px;
+        font-size: 36px;
+    }
+
+    .header p {
+        margin: 5px;
+        font-size: 18px;
+        opacity: 0.9;
+    }
+
+    /* Layout */
+    .container {
+        max-width: 1000px;
+        margin: 40px auto;
+        padding: 0 20px;
+    }
+
+    /* Section Title */
+    h2 {
+        border-left: 5px solid #1f3b57;
+        padding-left: 10px;
+        margin-top: 40px;
+    }
+
+    /* Card */
+    .card {
+        background: white;
+        padding: 20px;
+        margin: 15px 0;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    }
+
+    /* Links */
+    a {
+        color: #1f3b57;
+        text-decoration: none;
+        font-weight: 500;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    /* Grid for courses/research */
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 15px;
+    }
+
+    .tag {
+        display: inline-block;
+        background: #e8eef6;
+        padding: 5px 10px;
+        border-radius: 5px;
+        margin: 3px;
+        font-size: 13px;
+    }
+
+</style>
 </head>
 
 <body>
 
-    <!-- Your Picture -->
-    <img src="abid_0.jpg" alt="My Photo">
-
-    <!-- Your Name -->
+<!-- HEADER -->
+<div class="header">
+    <img src="abid_0.jpg" alt="Profile Photo">
     <h1>Abid M. Malik</h1>
-
-    <!-- Optional subtitle -->
     <p>Associate Professor of Teaching | Researcher</p>
+</div>
+
+<div class="container">
+
+    <!-- ABOUT -->
+    <h2>About</h2>
+    <div class="card">
+        <p>
+            I am an educator and researcher focusing on computer science, high-performance computing,
+            and software systems. My teaching emphasizes practical programming skills and modern software engineering practices.
+        </p>
+    </div>
+
+    <!-- COURSES -->
+    <h2>Courses</h2>
+    <div class="grid">
+
+        <div class="card">
+            <h3>CSE 220</h3>
+            <p>Programming fundamentals and problem solving.</p>
+            <a href="https://github.com/yourusername/CSE220" target="_blank">
+                View Course →
+            </a>
+        </div>
+
+        <div class="card">
+            <h3>Python Programming</h3>
+            <p>Control flow, data structures, OOP, and real-world applications.</p>
+        </div>
+
+        <div class="card">
+            <h3>HPC for Data Science</h3>
+            <p>Parallel computing, performance optimization, and large-scale systems.</p>
+        </div>
+
+    </div>
+
+    <!-- RESEARCH -->
+    <h2>Research Interests</h2>
+    <div class="card">
+        <span class="tag">High Performance Computing</span>
+        <span class="tag">Memory Systems</span>
+        <span class="tag">Compiler Optimization</span>
+        <span class="tag">Stencil Computation</span>
+        <span class="tag">AI Systems</span>
+    </div>
+
+    <!-- LINKS -->
+    <h2>Links</h2>
+    <div class="card">
+        <p>
+            <a href="https://github.com/yourusername" target="_blank">GitHub</a> <br>
+            <a href="https://scholar.google.com" target="_blank">Google Scholar</a> <br>
+            <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+        </p>
+    </div>
+
+</div>
 
 </body>
 </html>
